@@ -1,8 +1,790 @@
 {
-  "All Contracts": [
+  "contractTypes": [
+    "#"
+  ],
+  "fields": [
     {
-      "name": "Requestor Name",
-      "type": "text"
+      "name": "",
+      "type": "",
+      "mandatory": "",
+      "businessRule": "",
+      "visibility": {
+        "#": "Contract Details"
+      }
+    },
+    {
+      "name": "Company",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 2
+      }
+    },
+    {
+      "name": "Business",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 3
+      }
+    },
+    {
+      "name": "Location",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 4
+      }
+    },
+    {
+      "name": "Factory Address",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 5
+      }
+    },
+    {
+      "name": "Factory GSTIN No.",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 6
+      }
+    },
+    {
+      "name": "Registered Office Address",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 7
+      }
+    },
+    {
+      "name": "Corporate Office Address",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 8
+      }
+    },
+    {
+      "name": "Function",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 9
+      }
+    },
+    {
+      "name": "Department",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": " ",
+      "visibility": {
+        "#": 10
+      }
+    },
+    {
+      "name": "Business Vertical",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 11
+      }
+    },
+    {
+      "name": "Contract Category",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Disable this field with All Contracts as Option. User will not be selecting this fields.",
+      "visibility": {
+        "#": 12
+      }
+    },
+    {
+      "name": "Contract Type",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 13
+      }
+    },
+    {
+      "name": "Contract Document Type",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 14
+      }
+    },
+    {
+      "name": "CDA/NDA Available?",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Dependent Upon #7, Open this field if Selection 'New Contract, Renewal, Addendum, Termination'. Field Inputs Types: CDA, NDA, Not Applicable",
+      "visibility": {
+        "#": 15
+      }
+    },
+    {
+      "name": "9-Point Declaration",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "9-Point Declaration shall be in PDF or Image Document duly signed",
+      "visibility": {
+        "#": 16
+      }
+    },
+    {
+      "name": "PO No/ Capex No",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 17
+      }
+    },
+    {
+      "name": "PO No.",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "Dependent Upon #8, Open this field if Selection = PO Number",
+      "visibility": {
+        "#": 18
+      }
+    },
+    {
+      "name": "Capex No.",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "Dependent Upon #8, Open this field if Selection = Capex No.",
+      "visibility": {
+        "#": 19
+      }
+    },
+    {
+      "name": "Business Risks (If Any)",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 20
+      }
+    },
+    {
+      "name": "Brief Background of Agreement",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 21
+      }
+    },
+    {
+      "name": "Court of Jurisdiction",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Fix New Delhi as text in this, if user has to write something else, they will write this field by removing New Delhi.",
+      "visibility": {
+        "#": 22
+      }
+    },
+    {
+      "name": "",
+      "type": "",
+      "mandatory": "",
+      "businessRule": "",
+      "visibility": {
+        "#": "Contract Terms"
+      }
+    },
+    {
+      "name": "Contract Start Date",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": " ",
+      "visibility": {
+        "#": 1
+      }
+    },
+    {
+      "name": "Contract Term",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Refer the table - Colum H and Column I",
+      "visibility": {
+        "#": 2
+      }
+    },
+    {
+      "name": "Initial Renewal Date",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal",
+      "visibility": {
+        "#": 3
+      }
+    },
+    {
+      "name": "Contract Expiration Date",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": " ",
+      "visibility": {
+        "#": 4
+      }
+    },
+    {
+      "name": "Date of Main Agreement",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "To be opened up when Contract Document Type is selected as = Addendum/Termination/Renewal/Amendment",
+      "visibility": {
+        "#": 5
+      }
+    },
+    {
+      "name": "Term (In Month Or Years)",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": " ",
+      "visibility": {
+        "#": 6
+      }
+    },
+    {
+      "name": "",
+      "type": "",
+      "mandatory": "",
+      "businessRule": "",
+      "visibility": {
+        "#": "Key Information"
+      }
+    },
+    {
+      "name": "Scope of Work/ Deliverables",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 1
+      }
+    },
+    {
+      "name": "Payment Terms",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 2
+      }
+    },
+    {
+      "name": "Duration",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 3
+      }
+    },
+    {
+      "name": "Dispute Resolution",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 4
+      }
+    },
+    {
+      "name": "Governing Law",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 5
+      }
+    },
+    {
+      "name": "Safety Guidelines",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 6
+      }
+    },
+    {
+      "name": "Indemnity",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 7
+      }
+    },
+    {
+      "name": "Limitation of Liability",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 8
+      }
+    },
+    {
+      "name": "Termination",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 9
+      }
+    },
+    {
+      "name": "Notice & Obligation",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 10
+      }
+    },
+    {
+      "name": "Confidentiality & IPR",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 11
+      }
+    },
+    {
+      "name": "Incoterms",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 12
+      }
+    },
+    {
+      "name": "Force Majeure",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 13
+      }
+    },
+    {
+      "name": "",
+      "type": "",
+      "mandatory": "",
+      "businessRule": "",
+      "visibility": {
+        "#": "Commercial Terms"
+      }
+    },
+    {
+      "name": "Term",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": ""
+      }
+    },
+    {
+      "name": "Insurance",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 1
+      }
+    },
+    {
+      "name": "Fine & Penalities (If Any)",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 2
+      }
+    },
+    {
+      "name": "Incoterms",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 3
+      }
+    },
+    {
+      "name": "Milestones information",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "Don't show this field on Request Form, This field to come up as Mandatory on Publish Form For Legal.",
+      "visibility": {
+        "#": 4
+      }
+    },
+    {
+      "name": "",
+      "type": "",
+      "mandatory": "",
+      "businessRule": "",
+      "visibility": {
+        "#": "Counterparty Information"
+      }
+    },
+    {
+      "name": "Counterparty Company Name",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": " ",
+      "visibility": {
+        "#": 1
+      }
+    },
+    {
+      "name": "Counterparty Type",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 2
+      }
+    },
+    {
+      "name": "Counterparty City/State",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 3
+      }
+    },
+    {
+      "name": "Counterparty Country",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 4
+      }
+    },
+    {
+      "name": "Counterparty Company Address",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "",
+      "visibility": {
+        "#": 5
+      }
+    },
+    {
+      "name": "Registered Office Address",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "if Registered office option is selected in above field ",
+      "visibility": {
+        "#": 6
+      }
+    },
+    {
+      "name": "Corporate Office Address",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "if Corporate office option is selected in above field ",
+      "visibility": {
+        "#": 7
+      }
+    },
+    {
+      "name": "Head Office Address",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "if Head office option is selected in above field ",
+      "visibility": {
+        "#": 8
+      }
+    },
+    {
+      "name": "Branch Office Address",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "if Branch office option is selected in above field ",
+      "visibility": {
+        "#": 9
+      }
+    },
+    {
+      "name": "Principal Office Address",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "if Principal office option is selected in above field ",
+      "visibility": {
+        "#": 10
+      }
+    },
+    {
+      "name": "Counterparty GSTIN No.",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 11
+      }
+    },
+    {
+      "name": "Counterparty PAN No.",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "This field to come up as Mandatory if Counterparty Type is selected as 'New'",
+      "visibility": {
+        "#": 12
+      }
+    },
+    {
+      "name": "Counterparty MSME No. Applicable?",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "This field to come up as Mandatory if Counterparty Type is selected as 'New'",
+      "visibility": {
+        "#": 13
+      }
+    },
+    {
+      "name": "Provide MSME No.",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "This field to come up as Mandatory if above field is selected as YES",
+      "visibility": {
+        "#": 14
+      }
+    },
+    {
+      "name": "Counterparty CIN No. Applicable?",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "This field to come up as Mandatory if Counterparty Type is selected as 'New'",
+      "visibility": {
+        "#": 15
+      }
+    },
+    {
+      "name": "Provide CIN No.",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "This field to come up as Mandatory if above field is selected as YES",
+      "visibility": {
+        "#": 16
+      }
+    },
+    {
+      "name": "",
+      "type": "",
+      "mandatory": "",
+      "businessRule": "",
+      "visibility": {
+        "#": "Signer Details"
+      }
+    },
+    {
+      "name": "Select Signer",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 1
+      }
+    },
+    {
+      "name": "Signer Name",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 2
+      }
+    },
+    {
+      "name": "Signer E-mail",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 3
+      }
+    },
+    {
+      "name": "Phone Number",
+      "type": "",
+      "mandatory": "Yes",
+      "businessRule": "",
+      "visibility": {
+        "#": 4
+      }
+    },
+    {
+      "name": "Witness 1",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "",
+      "visibility": {
+        "#": 5
+      }
+    },
+    {
+      "name": "Witness 2",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "",
+      "visibility": {
+        "#": 6
+      }
+    },
+    {
+      "name": "",
+      "type": "",
+      "mandatory": "",
+      "businessRule": "",
+      "visibility": {
+        "#": " + Additional Signer Details"
+      }
+    },
+    {
+      "name": "",
+      "type": "",
+      "mandatory": "",
+      "businessRule": "",
+      "visibility": {
+        "#": "Supporting documents"
+      }
+    },
+    {
+      "name": "PO",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "Mandatory when PO No. is selected in field =\"PO No./ Capex No. \"",
+      "visibility": {
+        "#": 1
+      }
+    },
+    {
+      "name": "Capex",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "Mandatory when Capex is selected in field =\"PO No./ Capex No.\"",
+      "visibility": {
+        "#": 2
+      }
+    },
+    {
+      "name": "CDA",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "Mandatory when CDA is selected in field =\"CDA/NDA\"",
+      "visibility": {
+        "#": 3
+      }
+    },
+    {
+      "name": "NDA",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "Mandatory when NDA is selected in field =\"CDA/NDA\"",
+      "visibility": {
+        "#": 4
+      }
+    },
+    {
+      "name": "PAN No.",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "Mandatory when 'New' is selected in field =\"Counterparty Type\"",
+      "visibility": {
+        "#": 5
+      }
+    },
+    {
+      "name": "MSME No.",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "Mandatory to upload when response to field \"Counterparty MSME No. Applicable?\" is YES",
+      "visibility": {
+        "#": 6
+      }
+    },
+    {
+      "name": "CIN No.",
+      "type": "",
+      "mandatory": "Yes (Conditional)",
+      "businessRule": "Mandatory to upload when response to field \"Counterparty CIN No. Applicable?\" is YES",
+      "visibility": {
+        "#": 7
+      }
+    },
+    {
+      "name": "Signed Term Sheet",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "",
+      "visibility": {
+        "#": 8
+      }
+    },
+    {
+      "name": "Email",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "",
+      "visibility": {
+        "#": 9
+      }
+    },
+    {
+      "name": "Executive Summary",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "",
+      "visibility": {
+        "#": 10
+      }
+    },
+    {
+      "name": "EHS-Safery Guidelines",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "",
+      "visibility": {
+        "#": 11
+      }
+    },
+    {
+      "name": "Others",
+      "type": "",
+      "mandatory": "No",
+      "businessRule": "",
+      "visibility": {
+        "#": 12
+      }
     }
   ]
 }

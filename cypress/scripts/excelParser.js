@@ -1,29 +1,69 @@
-const XLSX = require('xlsx');
-const fs = require('fs-extra');
+const path = require('path');
+const fs = require("fs");
+const XLSX = require("xlsx");
 
-const workbook = XLSX.readFile('./cypress/fixtures/Implementation_SRF.xlsx');
-const sheet = workbook.Sheets[workbook.SheetNames[0]];
-const rows = XLSX.utils.sheet_to_json(sheet);
+const excelPath = path.resolve(
+  process.cwd(),
+  'Implementation_SRF.xlsx'
+);
 
-const categories = {};
+console.log("Reading Excel from:", excelPath);
+
+const workbook = XLSX.readFile(excelPath);
+const sheet =
+  workbook.Sheets[workbook.SheetNames[0]];
+
+const rows =
+  XLSX.utils.sheet_to_json(sheet);
+
+const fixedColumns = [
+  "Field Name",
+  "Field Type",
+  "Mandatory",
+  "Business Rules"
+];
+
+const contractTypes =
+  Object.keys(rows[0]).filter(
+    col => !fixedColumns.includes(col)
+  );
+
+const result = {
+  contractTypes,
+  fields: []
+};
 
 rows.forEach(row => {
 
-  const category = row['Category']; // MUST exist in Excel
+  const field = {
 
-  if (!category) return;
+    name: row["Field Name"] || "",
 
-  if (!categories[category]) {
-    categories[category] = [];
-  }
+    type: row["Field Type"] || "",
 
-  categories[category].push({
-    name: row['Field Name'],
-    type: row['Field Type']
+    mandatory: row["Mandatory"] || "",
+
+    businessRule:
+      row["Business Rules"] || "",
+
+    visibility: {}
+
+  };
+
+  contractTypes.forEach(type => {
+
+    field.visibility[type] =
+      row[type] || "";
+
   });
+
+  result.fields.push(field);
 
 });
 
-fs.writeJsonSync('./cypress/fixtures/categories.json', categories, { spaces: 2 });
+fs.writeFileSync(
+  "cypress/fixtures/categories.json",
+  JSON.stringify(result, null, 2)
+);
 
-console.log("DONE");
+console.log("categories.json generated");

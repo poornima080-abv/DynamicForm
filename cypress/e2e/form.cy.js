@@ -1,4 +1,3 @@
-import categories from '../fixtures/categories.json';
 
 describe('Dashboard Functionality', () => {
   before(() => {
@@ -15,48 +14,66 @@ describe('Dashboard Functionality', () => {
   after(() => {
     cy.log('All tests completed');
   });
-  Object.entries(categories).forEach(([contractType, fields]) => {
-  it(`Validate ${contractType}`, () => {
-    cy.get('mat-select[title="Contract Type"]')
-  .filter(':visible')
-  .first()
-  .click();
 
-   cy.get('mat-option')
-  .should('have.length.greaterThan', 0);
+  const contractType = "Addendum"; // you can parametrize later
 
-cy.contains('mat-option', contractType, { timeout: 10000 })
-  .click(); // Step 4: Validate fields
-    cy.wrap(fields).each((field) => {
-      cy.log(`Checking field: ${field.name}`);
-      cy.contains(field.name, { timeout: 15000, matchCase: false }).should('be.visible');
+  function loadContractData(type) {
+    const filePath = path.join(
+      __dirname,
+      "../generated",
+      `generated_${type}.json`
+    );
 
-      // Validate field type (DOM-based, not formControl-based)
-      cy.contains(field.name, { matchCase: false })
-        .parents('mat-form-field, div')
-        .then(($el) => {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  }
 
-          const type = (field.type || '').toLowerCase();
+    it("should validate all contract types dynamically", () => {
 
-          if (type === 'text') {
-            cy.wrap($el).find('input')
-              .should('exist');
-          }
+    // Step 1: load master metadata
+    cy.fixture("categories.json").then((meta) => {
+  cy.log(JSON.stringify(meta.contractTypes));
 
-          if (type === 'selection') {
-            cy.wrap($el).find('mat-select')
-              .should('exist');
-          }
 
-          if (type === 'textarea') {
-            cy.wrap($el).find('textarea')
-              .should('exist');
-          }
+      const contractTypes = meta.contractTypes;
+
+      // Step 2: loop ALL contract types dynamically
+      contractTypes.forEach((contractType) => {
+
+        cy.log(`Testing contract type: ${contractType}`);
+
+
+        // open dropdown
+        cy.get("mat-select").first().click();
+
+        // select contract type dynamically
+        cy.contains("mat-option", contractType, { timeout: 10000 })
+          .should("be.visible")
+          .click();
+
+        // Step 3: get expected fields for this type
+        const expectedFields = meta.fields.filter((field) => {
+
+          return (
+            field.visibility?.[contractType] &&
+            field.visibility?.[contractType]
+              .toString()
+              .toLowerCase() === "yes"
+          );
 
         });
 
+        // Step 4: validate UI fields
+        expectedFields.forEach((field) => {
+
+          cy.contains(field.name, { timeout: 10000 })
+            .should("be.visible");
+
+        });
+
+      });
+
     });
-  });
+
   });
 
 });
