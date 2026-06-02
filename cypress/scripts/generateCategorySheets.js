@@ -1,94 +1,60 @@
-const fs = require("fs");
-const path = require("path");
 const XLSX = require("xlsx");
+const fs = require("fs");
 
-// Load parsed metadata
-const data = require("../fixtures/categories.json");
+const filePath = "Implementation_SRF.xlsx";
+const wb = XLSX.readFile(filePath);
 
-// Ensure output folder exists
-const jsonOutDir = path.join(__dirname, "../generated");
-const excelOutDir = path.join(__dirname, "../output");
+// take FIRST sheet only
+const sheet = wb.Sheets[wb.SheetNames[0]];
 
-if (!fs.existsSync(jsonOutDir)) {
-  fs.mkdirSync(jsonOutDir, { recursive: true });
-}
-
-if (!fs.existsSync(excelOutDir)) {
-  fs.mkdirSync(excelOutDir, { recursive: true });
-}
-
-// -------------------------
-// SAFE STRING NORMALIZER
-// -------------------------
-const normalize = (val) =>
-  String(val ?? "").trim().toLowerCase();
-
-// -------------------------
-// SAFE FILE NAME CLEANER
-// -------------------------
-const safeFileName = (name) =>
-  String(name).replace(/[^a-z0-9-_]/gi, "_");
-
-// Loop all contract types
-data.contractTypes.forEach((contractType) => {
-
-  const fieldsForType = [];
-
-  data.fields.forEach((field) => {
-
-    const visibility = field.visibility?.[contractType];
-
-    if (normalize(visibility) === "yes") {
-      fieldsForType.push({
-        name: field.name || "",
-        type: field.type || "",
-        mandatory: field.mandatory || "",
-        rule: field.businessRule || "",
-        value: ""
-      });
-    }
-  });
-
-  // =========================
-  // 1. Write JSON file
-  // =========================
-  const jsonFilePath = path.join(
-    jsonOutDir,
-    `generated_${safeFileName(contractType)}.json`
-  );
-
-  fs.writeFileSync(
-    jsonFilePath,
-    JSON.stringify(
-      {
-        contractType,
-        fields: fieldsForType
-      },
-      null,
-      2
-    )
-  );
-
-  // =========================
-  // 2. Write Excel file
-  // =========================
-  const excelRows = fieldsForType.map((f) => ({
-    Name: f.name,
-    Value: "",
-    Type: f.type
-  }));
-
-  const wb = XLSX.utils.book_new();
-  const ws = XLSX.utils.json_to_sheet(excelRows);
-
-  XLSX.utils.book_append_sheet(wb, ws, "Fields");
-
-  const excelFilePath = path.join(
-    excelOutDir,
-    `${safeFileName(contractType)}.xlsx`
-  );
-
-  XLSX.writeFile(wb, excelFilePath);
+// convert to raw matrix (VERY IMPORTANT)
+const data = XLSX.utils.sheet_to_json(sheet, {
+  header: 1,
+  defval: ""
 });
 
-console.log("✅ Category sheets + Excel files generated successfully");
+if (!data || data.length < 2) {
+  throw new Error("Sheet 1 is empty or invalid");
+}
+
+// find real header row dynamically
+let headerIndex = data.findIndex(r => r.includes("Field Name"));
+if (headerIndex === -1) headerIndex = 0;
+
+const headers = data[headerIndex];
+
+// build structured fields safely
+const fields = [];
+
+for (let i = headerIndex + 1; i < data.length; i++) {
+  const row = data[i];
+
+  // skip empty / section headers like "Contract Details"
+  if (!row || !row[1]) continue;
+  if (typeof row[1] === "string" && row[1].includes("Agreement")) continue;
+
+  const obj = {};
+  headers.forEach((h, idx) => {
+    obj[h] = row[idx];
+  });
+
+  fields.push({
+    name: obj["Field Name"],
+    type: obj["Field Input Type"],
+    mandatory: String(obj["Mandatory"] || "").trim(),
+    rule: obj["Business Rules"] || "",
+    visibility: obj
+  });
+}
+
+const output = {
+  contractTypes: [],
+  fields
+};
+
+fs.writeFileSync(
+  "cypress/fixtures/categories.json",
+  JSON.stringify(output, null, 2)
+);
+
+console.log("categories.json generated safely");
