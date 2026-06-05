@@ -200,7 +200,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -395,7 +395,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -403,7 +403,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -829,7 +829,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -1024,7 +1024,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -1032,7 +1032,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -1442,7 +1442,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -1645,7 +1645,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -1653,7 +1653,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -2079,7 +2079,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -2282,7 +2282,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -2290,7 +2290,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -2716,7 +2716,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -2911,7 +2911,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -2919,7 +2919,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -3337,7 +3337,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -3540,7 +3540,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -3548,7 +3548,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -3974,7 +3974,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -4177,7 +4177,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -4185,7 +4185,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -4611,7 +4611,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -4814,7 +4814,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -4822,7 +4822,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -5248,7 +5248,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -5443,7 +5443,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -5451,7 +5451,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -5877,7 +5877,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -6080,7 +6080,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -6088,7 +6088,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -6514,7 +6514,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -6717,7 +6717,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -6725,7 +6725,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -7151,7 +7151,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -7354,7 +7354,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -7362,7 +7362,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -7788,7 +7788,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -7991,7 +7991,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -7999,7 +7999,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -8425,7 +8425,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -8628,7 +8628,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -8636,7 +8636,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -9062,7 +9062,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -9265,7 +9265,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -9273,7 +9273,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -9699,7 +9699,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -9902,7 +9902,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -9910,7 +9910,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -10328,7 +10328,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -10523,7 +10523,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -10531,7 +10531,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -10957,7 +10957,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -11160,7 +11160,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -11168,7 +11168,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -11594,7 +11594,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -11797,7 +11797,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -11805,7 +11805,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -12231,7 +12231,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -12434,7 +12434,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -12442,7 +12442,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -12868,7 +12868,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -13071,7 +13071,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -13079,7 +13079,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -13505,7 +13505,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -13708,7 +13708,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -13716,7 +13716,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -14142,7 +14142,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -14345,7 +14345,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -14353,7 +14353,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -14779,7 +14779,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -14982,7 +14982,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -14990,7 +14990,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -15416,7 +15416,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -15619,7 +15619,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -15627,7 +15627,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -16053,7 +16053,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -16256,7 +16256,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -16264,7 +16264,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -16690,7 +16690,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -16893,7 +16893,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -16901,7 +16901,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -17327,7 +17327,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -17530,7 +17530,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -17538,7 +17538,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -17964,7 +17964,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -18167,7 +18167,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -18175,7 +18175,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -18601,7 +18601,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -18804,7 +18804,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -18812,7 +18812,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -19238,7 +19238,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -19441,7 +19441,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -19449,7 +19449,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -19875,7 +19875,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -20078,7 +20078,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -20086,7 +20086,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -20512,7 +20512,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -20715,7 +20715,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -20723,7 +20723,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -21149,7 +21149,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -21352,7 +21352,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -21360,7 +21360,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -21786,7 +21786,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -21989,7 +21989,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -21997,7 +21997,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -22423,7 +22423,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -22626,7 +22626,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -22634,7 +22634,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -23060,7 +23060,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -23263,7 +23263,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -23271,7 +23271,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -23697,7 +23697,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -23900,7 +23900,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -23908,7 +23908,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -24334,7 +24334,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -24537,7 +24537,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -24545,7 +24545,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -24971,7 +24971,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -25174,7 +25174,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -25182,7 +25182,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -25608,7 +25608,7 @@
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
         "Value": "",
-        "Business Rule": "This field will be shown and will be mandatory when Contract Term is selected as Fixed Term With Auto - Renewal"
+        "Business Rule": "Dependent Upon #28, Open this field if Selection = Fixed Term With Auto - Renewal"
       },
       {
         "Field Name": "Contract Expiration Date",
@@ -25811,7 +25811,7 @@
         "Business Rule": ""
       },
       {
-        "Field Name": "Registered Office Address",
+        "Field Name": "Counterparty Registered Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",
@@ -25819,7 +25819,7 @@
         "Business Rule": "if Registered office option is selected in above field"
       },
       {
-        "Field Name": "Corporate Office Address",
+        "Field Name": "Counterparty Corporate Office Address",
         "Field Input Type": "Text",
         "Mandatory": "Yes (Conditional)",
         "Visibility": "Yes",

@@ -21,10 +21,10 @@ module.exports = {
 
       on("task", {
 
-       async generateAI({ filePath }) {
-  console.log("FILE PATH:", filePath);
-  return await generateAIEngine(filePath);
-},
+        async generateAI({ filePath }) {
+          console.log("FILE PATH:", filePath);
+          return await generateAIEngine(filePath);
+        },
 
         async convertJsonToExcel({ contracts }) {
           return await convertJsonToExcel(contracts);
