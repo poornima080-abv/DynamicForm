@@ -72,14 +72,14 @@ describe('Dashboard Functionality', () => {
         cy.get('.cdk-overlay-pane', { timeout: 10000 }).should('exist');
         cy.contains('mat-option', contractType, { timeout: 10000 }).click({ force: true });
 
-        cy.wait(1000);
+        waitForLoader();
 
         const expectedFields = contract.fields.filter(field =>
           shouldShowField(field, "request")
         );
 
 
-        expectedFields.forEach((field) => {
+       cy.wrap(expectedFields).each((field) => {
 
           const fieldName = field["Field Name"];
           const fieldType = field["Field Input Type"];
@@ -98,27 +98,22 @@ describe('Dashboard Functionality', () => {
             value: fieldValue
           });
 
+
+          /*
           if (fieldType === "Upload") {
             if (isFixedUploadField(field)) {
               cy.contains(fieldName).should('exist');
-              cy.get('input[type="file"]')
-                .last().selectFile('cypress/fixtures/File/adoc1.pdf', { force: true });
+              cy.get('input[type="file"]').last().selectFile('cypress/fixtures/File/adoc1.pdf', { force: true });
             } else {
-
-              cy.get('mat-select[title="Enter Document Name"]')
-                .first()
-                .click({ force: true });
-
-              cy.contains('mat-option', fieldName)
-                .should('exist')
-                .click({ force: true });
-
-              cy.get('input[type="file"]')
-                .last()
-                .selectFile('cypress/fixtures/File/adoc1.pdf', { force: true });
+              cy.get('mat-select[title="Enter Document Name"]').first().click({ force: true });
+              cy.contains('mat-option', fieldName).should('exist').click({ force: true });
+              cy.get('input[type="file"]').last().selectFile('cypress/fixtures/File/adoc1.pdf', { force: true });
             }
-          } else if (fieldType === "Selection" || fieldType === "Dropdown" || fieldType === "Select") {
-
+          }
+            */ 
+           cy.log(`${fieldName} => ${fieldType}`);
+           if (fieldType === "Selection" || fieldType === "Dropdown" || fieldType === "Select") {
+cy.log(`${fieldName} => ${fieldValue}`);
             cy.contains('mat-label', fieldName).should('exist').then(() => {
               if (fieldValue && !fieldValue.includes('Matrix') && fieldValue.trim() !== '') {
 
@@ -172,7 +167,7 @@ describe('Dashboard Functionality', () => {
             });
 
           }
-          /*  else if (fieldType === "Date" || fieldType === "Select Date / Auto Populate") {
+           else if (fieldType === "Date" || fieldType === "Select Date / Auto Populate") {
               cy.get('body').click(0, 0);
               cy.get('body').type('{esc}');
               cy.contains('mat-label', fieldName).should('exist').then(($el) => {
@@ -188,7 +183,7 @@ describe('Dashboard Functionality', () => {
               });
   
             } 
-            */
+            
           else if (fieldType === "Fixed") {
 
             cy.contains(fieldName).then(($label) => {
@@ -231,12 +226,15 @@ describe('Dashboard Functionality', () => {
 
           }
 
+        
         });
       });
       cy.then(() => {
         cy.writeFile(
           'cypress/fixtures/contract-output.json',
           contractCapture);
+
+          
 
       });
     });

@@ -11,6 +11,11 @@
   },
   "dependencies": {
     "fs-extra": "^11.3.5",
+    "ollama": "^0.6.3",
     "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "cypress": "^15.16.0",
+    "exceljs": "^4.4.0"
   }
 }
