@@ -6,7 +6,7 @@ const {
 } = require("./cypress/scripts/excelParser.js");
 */
 const {
- convertJsonToExcelAI,  generateExcelFromSheet  
+ convertJsonToExcelAI,  generateExcelFromSheet, generateAI
 } = require("./cypress/scripts/excelParserAI.js");
 
 function readExcelFile(filePath) {
