@@ -1,10 +1,4 @@
 const XLSX = require('xlsx');
-/*
-const {
-  generateAI: generateAIEngine,
-  convertJsonToExcel
-} = require("./cypress/scripts/excelParser.js");
-*/
 const {
  convertJsonToExcelAI,  generateExcelFromSheet, generateAI
 } = require("./cypress/scripts/excelParserAI.js");
@@ -25,16 +19,7 @@ module.exports = {
     setupNodeEvents(on, config) {
 
       on("task", {
-        /*
-                async generateAI({ filePath }) {
-                  console.log("FILE PATH:", filePath);
-                  return await generateAIEngine(filePath);
-                },
-        
-                async convertJsonToExcel({ contracts }) {
-                  return await convertJsonToExcel(contracts);
-                },
-                */
+  
 
         readExcelFile(filePath) {
           return readExcelFile(filePath);
@@ -59,6 +44,6 @@ module.exports = {
     },
 
     defaultCommandTimeout: 120000,
-    taskTimeout: 600000
+    taskTimeout: 3600000
   }
 };

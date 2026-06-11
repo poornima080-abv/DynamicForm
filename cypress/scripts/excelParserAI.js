@@ -2,6 +2,7 @@ const XLSX    = require("xlsx");
 const fs      = require("fs");
 const path    = require("path");
 const ExcelJS = require("exceljs");
+const http    = require("http");
 
 console.log("excelParserAI.js loaded");
 
@@ -20,23 +21,122 @@ const TYPE_MAP = {
   "Fixed":                       "disableString",
 };
 
-const MANDATORY_ONLY_PATTERNS = [
-  /this field to come up as mandatory/i,
-  /come up as mandatory if/i,
-  /come up as mandatory when/i,
-  /will be mandatory when/i,
-  /mandatory on publish form/i,
-];
+// ======================= OLLAMA AI =======================
+async function callOllama(prompt) {
+  return new Promise((resolve) => {
+    const body = JSON.stringify({ model: "llama3", prompt, stream: false });
 
-// ======================= HELPERS =======================
-function normalizePunct(s) {
-  return String(s || "")
-    .toLowerCase()
-    .replace(/[/\\.,\-"'=]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+    const options = {
+      hostname: "localhost",
+      port:     11434,
+      path:     "/api/generate",
+      method:   "POST",
+      headers:  {
+        "Content-Type":   "application/json",
+        "Content-Length": Buffer.byteLength(body),
+      },
+    };
+
+    const req = http.request(options, (res) => {
+      let data = "";
+      res.on("data", chunk => { data += chunk; });
+      res.on("end", () => {
+        try {
+          const parsed = JSON.parse(data);
+          resolve(parsed.response || "");
+        } catch (e) {
+          console.error(`Ollama parse error: ${e.message}`);
+          resolve("");
+        }
+      });
+    });
+
+    req.on("error", (e) => {
+      console.error(`Ollama error: ${e.message}`);
+      resolve("");
+    });
+
+    // no timeout — let AI take as long as it needs
+    req.write(body);
+    req.end();
+  });
 }
 
+// ======================= AI DEPENDENCY RESOLVER =======================
+async function resolveFieldsWithAI(contractType, fields) {
+
+  const selectedValues = {};
+  for (const f of fields) {
+    if ((TYPE_MAP[f["Field Input Type"]] || "") === "select") {
+      const raw = String(f["Value"] || "").trim();
+      const sel = raw.includes("|") ? raw.split("|")[0].trim() : raw.trim();
+      if (sel && !sel.toLowerCase().includes("matrix")) {
+        selectedValues[f["Field Name"]] = sel;
+      }
+    }
+  }
+
+  const fieldList = fields.map(f => ({
+    name:      f["Field Name"],
+    type:      f["Field Input Type"],
+    mandatory: f["Mandatory"],
+    rule:      f["Business Rule"],
+  }));
+
+  const prompt = `
+You are a form dependency engine for enterprise contract management.
+
+CONTRACT TYPE: "${contractType}"
+
+SELECTED VALUES (first option chosen for each dropdown):
+${JSON.stringify(selectedValues, null, 2)}
+
+TASK:
+For each field below, read its business rule and decide:
+- true  = field should be VISIBLE on the form
+- false = field should be HIDDEN
+
+DECISION RULES:
+1. Rule says "don't show on request form" or "do not show" → false
+2. Rule says "come up as mandatory" or "will be mandatory" → true (always visible, just conditionally mandatory)
+3. Rule says "open/show if selection = X" → true only if any selected value matches X
+4. Rule says "if X option is selected in above field" → check nearest preceding address dropdown's selected value
+5. Rule says "if X is selected as Y" → find field X in selected values, check if it equals Y
+6. Rule says "shown when X is selected as Y" → find field X in selected values, check if it equals Y
+7. Rule says "opened up when X is selected as Y or Z" → true if field X's value is in the list
+8. Rule says "mandatory when X is selected in field = Y" → true only if field Y's value equals X
+9. Rule says "mandatory to upload when response to field X is Y" → true if field X's value equals Y
+10. No rule or unclear rule → true
+
+CRITICAL — return ONLY this JSON format, nothing else:
+{
+  "Field Name 1": true,
+  "Field Name 2": false
+}
+
+FIELDS:
+${JSON.stringify(fieldList, null, 2)}
+`;
+
+  console.log(`\nSending to AI: ${contractType} | Fields: ${fieldList.length} | Prompt: ${prompt.length} chars`);
+
+  const result = await callOllama(prompt);
+
+  try {
+    const clean     = result.replace(/```json|```/g, "").trim();
+    const jsonMatch = clean.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) throw new Error("No JSON found in response");
+    const parsed = JSON.parse(jsonMatch[0]);
+    console.log(`✅ AI resolved ${Object.keys(parsed).length} fields for: ${contractType}`);
+    return parsed;
+  } catch (e) {
+    console.error(`❌ AI failed for ${contractType}: ${e.message}`);
+    console.error(`Raw (first 300 chars): ${result.slice(0, 300)}`);
+    return null;
+  }
+}
+
+// ======================= HELPERS =======================
 function isActualRule(text) {
   if (!text || text.trim() === "") return false;
   const t = text.toLowerCase();
@@ -47,7 +147,6 @@ function isActualRule(text) {
     t.includes("don't show")           ||
     t.includes("do not show")          ||
     t.includes("disable this")         ||
-    t.includes("show this field")      ||
     t.includes("come up as mandatory") ||
     t.includes("will be shown")        ||
     t.includes("will be mandatory")    ||
@@ -59,233 +158,6 @@ function isActualRule(text) {
     t.includes("opened up when")       ||
     t.includes("shown when")
   );
-}
-
-function fuzzyMatch(a, b) {
-  const al = String(a || "").toLowerCase().trim();
-  const bl = String(b || "").toLowerCase().trim();
-  if (!al || !bl) return false;
-  if (al === bl) return true;
-
-  const anorm = normalizePunct(al);
-  const bnorm = normalizePunct(bl);
-  if (anorm === bnorm) return true;
-
-  const poNorm = s => s
-    .replace(/\bpo\s*no\.?\s*[\/]?\s*capex\s*no\.?\b/gi, "po capex field")
-    .replace(/\bpo\s*no\.?\b/gi,    "po number")
-    .replace(/\bcapex\s*no\.?\b/gi, "capex number");
-
-  const ap = poNorm(anorm);
-  const bp = poNorm(bnorm);
-  if (ap === bp) return true;
-
-  if (ap.includes(bp) || bp.includes(ap)) {
-    const aW = ap.split(/\s+/).filter(w => w.length > 2);
-    const bW = bp.split(/\s+/).filter(w => w.length > 2);
-    const sh = aW.length <= bW.length ? aW : bW;
-    const lo = aW.length <= bW.length ? bW : aW;
-    if (lo.length > sh.length + 1) return false;
-    return true;
-  }
-
-  // bidirectional word match — fixes PO No / Capex No cross-match
-  const aWords = anorm.split(/\s+/).filter(w => w.length > 2);
-  const bWords = bnorm.split(/\s+/).filter(w => w.length > 2);
-  if (!aWords.length || !bWords.length) return false;
-  return aWords.every(w => bnorm.includes(w)) && bWords.every(w => anorm.includes(w));
-}
-
-function splitAllowed(raw) {
-  return raw.split(/\s*[\/,]\s*/).map(s => s.trim()).filter(Boolean);
-}
-
-function findBestParent(selectedValues, parentName) {
-  const pNorm = normalizePunct(parentName);
-  return Object.keys(selectedValues)
-    .filter(k => {
-      const kNorm = normalizePunct(k);
-      return kNorm === pNorm      ||
-             kNorm.includes(pNorm)||
-             pNorm.includes(kNorm)||
-             fuzzyMatch(k, parentName);
-    })
-    .sort((a, b) => {
-      const score = k => {
-        const kn = normalizePunct(k);
-        if (kn === pNorm)         return 1000;
-        if (kn.startsWith(pNorm)) return 500;
-        if (kn.includes(pNorm))   return 100;
-        return k.length;
-      };
-      return score(b) - score(a);
-    })[0];
-}
-
-// ======================= DEPENDENCY ENGINE =======================
-function buildDependencyMap(fields) {
-  const selectedValues = {};
-  const excludedFields = new Set();
-
-  // pass 1 — collect selected values for all select fields
-  for (const field of fields) {
-    const fieldName = String(field["Field Name"]       || "").trim();
-    const fieldType = String(field["Field Input Type"] || "").trim();
-    const raw       = String(field["Value"]            || "").trim();
-    const rule      = String(field["Business Rule"]    || "").trim();
-    if ((TYPE_MAP[fieldType] || "") !== "select") continue;
-
-    let source = raw;
-    if (!source || source.toLowerCase().includes("matrix")) {
-      if (rule && !isActualRule(rule)) source = rule;
-    }
-    const selected = source.includes("|") ? source.split("|")[0].trim() : source.trim();
-    if (selected && !selected.toLowerCase().includes("matrix")) {
-      selectedValues[fieldName] = selected;
-    }
-  }
-
-  // pass 2 — evaluate rules for non-select fields
-  for (const field of fields) {
-    const fieldName = String(field["Field Name"]       || "").trim();
-    const fieldType = String(field["Field Input Type"] || "").trim();
-    const rule      = String(field["Business Rule"]    || "").trim();
-    if ((TYPE_MAP[fieldType] || "") === "select") continue;
-
-    if (
-      rule.toLowerCase().includes("don't show this field on request form") ||
-      rule.toLowerCase().includes("do not show")
-    ) { excludedFields.add(fieldName); continue; }
-
-    if (MANDATORY_ONLY_PATTERNS.some(p => p.test(rule))) continue;
-    if (!rule) continue;
-
-    if (!checkDependency(rule, selectedValues, fields, fieldName)) {
-      excludedFields.add(fieldName);
-    }
-  }
-
-  return excludedFields;
-}
-
-function checkDependency(rule, selectedValues, allFields, currentFieldName) {
-  const r = rule.trim();
-
-  // P1a: mandatory when X is selected in field = Y
-  const p1a = r.match(/mandatory when\s+['"]?([^'"=\n]+?)['"]?\s+is selected in field\s*[="]*\s*['"]?([^'"\n]+?)['"]?\s*$/i);
-  if (p1a) {
-    const key = findBestParent(selectedValues, p1a[2].trim());
-    if (!key) return false;
-    return fuzzyMatch(selectedValues[key], p1a[1].trim());
-  }
-
-  // P1b: Open this field if Selection = X
-  const p1b = r.match(/open this field if selection[s]?\s*[=:]\s*['"]?([^,.'"\n\r]+)['"]?/i);
-  if (p1b) return Object.values(selectedValues).some(v => fuzzyMatch(v, p1b[1].trim()));
-
-  // P1c: Open this field if FIELDNAME is selected as VALUE
-  const p1c = r.match(/open this field if\s+(.+?)\s+is selected as\s+['"]?([^'".\n\r]+?)['"]?\s*$/i);
-  if (p1c) {
-    const key = findBestParent(selectedValues, p1c[1].trim());
-    if (!key) return false;
-    return splitAllowed(p1c[2].trim()).some(a => fuzzyMatch(selectedValues[key], a));
-  }
-
-  // P2: Open this field if Selection 'X,Y,Z'
-  const p2 = r.match(/open this field if selection\s*['"]([^'"]+)['"]/i);
-  if (p2) {
-    const allowed = p2[1].split(",").map(s => s.trim());
-    return Object.values(selectedValues).some(v => allowed.some(a => fuzzyMatch(v, a)));
-  }
-
-  // P3: if X option is selected in above field
-  const p3 = r.match(/if\s+(.+?)\s+option is selected in above field/i);
-  if (p3) {
-    const required     = p3[1].trim();
-    const currentIndex = allFields.findIndex(f => f["Field Name"] === currentFieldName);
-    const isAddrSelect = f => {
-      if ((TYPE_MAP[f["Field Input Type"]] || "") !== "select") return false;
-      const fName = String(f["Field Name"] || "").toLowerCase();
-      const fVal  = String(f["Value"]      || "").toLowerCase();
-      const fRule = String(f["Business Rule"] || "").toLowerCase();
-      return fName.includes("address") ||
-             fVal.includes("registered") || fVal.includes("corporate") ||
-             fVal.includes("branch")     || fVal.includes("principal") ||
-             fVal.includes("head office")||
-             fRule.includes("registered")|| fRule.includes("corporate") ||
-             fRule.includes("branch")    || fRule.includes("principal");
-    };
-    const prev =
-      [...allFields].slice(0, currentIndex).reverse().find(isAddrSelect) ||
-      [...allFields].slice(0, currentIndex).reverse()
-        .find(f => (TYPE_MAP[f["Field Input Type"]] || "") === "select");
-    if (!prev) return false;
-    return fuzzyMatch(selectedValues[prev["Field Name"]] || "", required);
-  }
-
-  // P4: if above field is selected as X
-  const p4 = r.match(/if above field is selected as\s+['"]?([\w][\w\s]*)['"]?/i);
-  if (p4) {
-    const currentIndex = allFields.findIndex(f => f["Field Name"] === currentFieldName);
-    const prev = [...allFields].slice(0, currentIndex).reverse()
-      .find(f => (TYPE_MAP[f["Field Input Type"]] || "") === "select");
-    if (!prev) return false;
-    return fuzzyMatch(selectedValues[prev["Field Name"]] || "", p4[1].trim());
-  }
-
-  // P5: if X is selected as 'Y'
-  const p5 = r.match(/if\s+(.+?)\s+is selected as\s+['"]([^'"]+)['"]/i);
-  if (p5) {
-    const key = findBestParent(selectedValues, p5[1].trim());
-    if (!key) return false;
-    return splitAllowed(p5[2].trim()).some(a => fuzzyMatch(selectedValues[key], a));
-  }
-
-  // P6: shown/opened when X is selected as Y (supports Y/Z multi-value)
-  const p6 = r.match(/(?:shown|opened?).*?when\s+(.+?)\s+is selected as[=\s]*['"]?([^'".\n\r]+?)['"]?\s*$/i);
-  if (p6) {
-    const key = findBestParent(selectedValues, p6[1].trim());
-    if (!key) return false;
-    return splitAllowed(p6[2].trim()).some(a => fuzzyMatch(selectedValues[key], a));
-  }
-
-  // P7: mandatory when X is selected
-  const p7 = r.match(/mandatory when\s+['"]?([^'"=\n]+?)['"]?\s+is selected/i);
-  if (p7) return Object.values(selectedValues).some(v => fuzzyMatch(v, p7[1].trim()));
-
-  // P8: opened up when X is selected as = Y/Z
-  const p8 = r.match(/opened?\s+up\s+when\s+(.+?)\s+is selected as[=\s]*['"]?([^'".\n\r]+?)['"]?\s*$/i);
-  if (p8) {
-    const key = findBestParent(selectedValues, p8[1].trim());
-    if (!key) return false;
-    return splitAllowed(p8[2].trim()).some(a => fuzzyMatch(selectedValues[key], a));
-  }
-
-  // P9: mandatory to upload when response to field X is Y
-  const p9 = r.match(/mandatory to upload when response to field\s+["']?([^"'\n]+?)["']?\s+is\s+(\w+)/i);
-  if (p9) {
-    const key = findBestParent(selectedValues, p9[1].trim());
-    if (!key) return false;
-    return fuzzyMatch(selectedValues[key], p9[2].trim());
-  }
-
-  // P10: opened/shown when X = Y (equals sign variant)
-  const p10 = r.match(/(?:opened?|shown|display).*?when\s+(.+?)\s*[=:]\s*([^.\n\r]+?)\s*$/i);
-  if (p10) {
-    const key = findBestParent(selectedValues, p10[1].trim());
-    if (!key) return false;
-    return splitAllowed(p10[2].trim()).some(a => fuzzyMatch(selectedValues[key], a));
-  }
-
-  // P11: dependent upon X - Y
-  const p11 = r.match(/dependent upon\s+(.+?)\s*[-–]\s*(.+)/i);
-  if (p11) {
-    const key = findBestParent(selectedValues, p11[1].trim());
-    if (!key) return false;
-    return splitAllowed(p11[2].trim()).some(a => fuzzyMatch(selectedValues[key], a));
-  }
-
-  return true; // no pattern matched → show
 }
 
 // ======================= EXCEL PARSER =======================
@@ -348,7 +220,7 @@ function parseExcelToContracts(filePath) {
   return contracts;
 }
 
-// ======================= GENERATE JSON (step 1 task) =======================
+// ======================= GENERATE JSON =======================
 async function generateAI(filePath) {
   const contracts  = parseExcelToContracts(filePath);
   const outputPath = path.join(process.cwd(), "cypress", "fixtures", "categoriesAI.json");
@@ -359,10 +231,12 @@ async function generateAI(filePath) {
 
 // ======================= WRITE ONE CONTRACT EXCEL =======================
 async function writeContractExcel(contract, outputDir) {
-  const contractType   = contract["Contract Type"];
-  const excludedFields = buildDependencyMap(contract.fields || []);
+  const contractType = contract["Contract Type"];
 
-  // build selectedValues for upload field logic
+  // AI decides all field visibility
+  const aiDecisions = await resolveFieldsWithAI(contractType, contract.fields || []);
+
+  // build selectedValues for upload logic
   const selectedValues = {};
   for (const field of contract.fields || []) {
     const fName   = String(field["Field Name"]       || "").trim();
@@ -397,17 +271,25 @@ async function writeContractExcel(contract, outputDir) {
     const rule       = String(field["Business Rule"]    || "").toLowerCase();
     const visibility = String(field.Visibility          || "").toLowerCase();
 
+    // hard filters — always applied
     if (visibility === "no") continue;
     if (rule.includes("don't show this field on request form")) continue;
     if (rule.includes("do not show")) continue;
     if (fieldName === "Requestor Name") continue;
-    if (excludedFields.has(fieldName)) { console.log(`  Excluded: ${fieldName}`); continue; }
 
+    // AI decision — if AI says false, hide it
+    if (aiDecisions && aiDecisions[fieldName] === false) {
+      console.log(`  AI hidden: ${fieldName}`);
+      continue;
+    }
+
+    // system fields
     if (fieldName === "Requestor Email") {
       ws.addRow({ name: "Requestor Email", data: "tchugh@srtekbox.com", type: "disableString" });
       continue;
     }
 
+    // upload fields
     if (fieldType === "Upload") {
       if (fieldName === "Contract Document") {
         const draftVal = selectedValues["Draft Type"] || "";
@@ -430,6 +312,7 @@ async function writeContractExcel(contract, outputDir) {
       continue;
     }
 
+    // resolve type and value
     const excelType = TYPE_MAP[fieldType] || "string";
     let value = "";
     const rawValue = String(field.Value            || "").trim();
@@ -472,7 +355,7 @@ async function writeContractExcel(contract, outputDir) {
     console.log(`✅ Written: ${fileName}`);
     return fileName;
   } catch (err) {
-    if (err.code === "EBUSY") console.error(`❌ File open in Excel: ${fileName}`);
+    if (err.code === "EBUSY") console.error(`❌ File open: ${fileName}`);
     else                      console.error(`❌ Failed: ${fileName} | ${err.message}`);
     return null;
   }
@@ -492,7 +375,7 @@ async function convertJsonToExcelAI(contracts) {
   return `Done — ${results.success.length} Excel files written to ${outputDir}`;
 }
 
-// ======================= SINGLE-STEP: Sheet → Excel =======================
+// ======================= SINGLE STEP: Sheet → Excel =======================
 async function generateExcelFromSheet(filePath) {
   const contracts  = parseExcelToContracts(filePath);
   const outputPath = path.join(process.cwd(), "cypress", "fixtures", "categoriesAI.json");
@@ -508,7 +391,7 @@ async function generateExcelFromSheet(filePath) {
     else          results.failed.push(contract["Contract Type"]);
   }
 
-  console.log(`\n✅ Done — ${results.success.length} files written, ${results.failed.length} failed`);
+  console.log(`\n✅ Done — ${results.success.length} written, ${results.failed.length} failed`);
   return {
     message: `Generated ${results.success.length} of ${contracts.length} contracts`,
     success: results.success,
@@ -517,9 +400,6 @@ async function generateExcelFromSheet(filePath) {
 }
 
 // ======================= EXPORTS =======================
-const exportedKeys = ["generateAI", "convertJsonToExcelAI", "generateExcelFromSheet"];
-console.log("ALL EXPORTED KEYS:", exportedKeys);
-
 module.exports = {
   generateAI,
   convertJsonToExcelAI,
