@@ -415,7 +415,7 @@ async function runExcelEngine(filePath) {
 // ======================= JSON → EXCEL =======================
 async function convertToExcel(contracts) {
 
-  const outputDir = path.join(process.cwd(), "cypress/fixtures/File/generated");
+  const outputDir = path.join(process.cwd(), "cypress/generated");
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
   for (const contract of contracts) {

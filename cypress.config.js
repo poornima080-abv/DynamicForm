@@ -1,13 +1,9 @@
 const XLSX = require('xlsx');
-/*
+
 const {
   generateAI: generateAIEngine,
   convertJsonToExcel
 } = require("./cypress/scripts/excelParser.js");
-*/
-const {
- convertJsonToExcelAI,  generateExcelFromSheet, generateAI
-} = require("./cypress/scripts/excelParserAI.js");
 
 function readExcelFile(filePath) {
 
@@ -25,7 +21,7 @@ module.exports = {
     setupNodeEvents(on, config) {
 
       on("task", {
-        /*
+        
                 async generateAI({ filePath }) {
                   console.log("FILE PATH:", filePath);
                   return await generateAIEngine(filePath);
@@ -34,21 +30,7 @@ module.exports = {
                 async convertJsonToExcel({ contracts }) {
                   return await convertJsonToExcel(contracts);
                 },
-                */
 
-        readExcelFile(filePath) {
-          return readExcelFile(filePath);
-        },
-
-        // step 1 — Excel → JSON (no AI)
-        async generateAI({ filePath }) {
-          return await generateAI(filePath);
-        },
-
-        // step 2 — JSON → Excel (AI decides visibility)
-        async convertJsonToExcelAI({ contracts }) {
-          return await convertJsonToExcelAI(contracts);
-        },
         // step 3 — UI Validation (placeholder)
          async generateExcelFromSheet({ contracts }) {
           return await generateExcelFromSheet(contracts);
@@ -59,6 +41,6 @@ module.exports = {
     },
 
     defaultCommandTimeout: 120000,
-    taskTimeout: 600000
+    taskTimeout: 3600000
   }
 };
